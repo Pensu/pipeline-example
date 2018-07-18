@@ -1,9 +1,7 @@
-pipeline {
-  stages {
-    stage('Git Clone') {
-     steps {
-       echo 'Cloning Git'
-       git clone https://github.com/pensu/pipeline-exmaple
-     }
-  }
+node {
+    stage "Clone the repo"
+        sh "echo 'Cloning the repo' "
+        sh "git clone https://github.com/pensu/pipeline-example"
+    stage "Install python"
+        sh "apt-get update && apt-get install -y golang"
 }
