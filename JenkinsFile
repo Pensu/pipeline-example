@@ -1,7 +1,10 @@
 node {
-    stage "Clone the repo"
+       stage "Doing the docker build"
         sh "echo 'Cloning the repo' "
         sh "git clone https://github.com/pensu/pipeline-example"
-    stage "Install python"
-        sh "apt-get update && apt-get install -y golang"
+        sh "docker login -u admin -p meC10zGuuav6dEC0nLV3me7zFKvG6VOX -e test@abc.com mycluster.icp:8500"
+        sh "cd pipeline-example && docker build -t mycluster.icp:8500/default/test:latest ."
+    stage "Pushing the docker image"
+        sh "docker login -u admin -p meC10zGuuav6dEC0nLV3me7zFKvG6VOX -e test@abc.com mycluster.icp:8500"
+        sh "docker push mycluster.icp:8500/default/test:latest "
 }
