@@ -1,2 +1,2 @@
 FROM ubuntu:16.04
-RUN apt-get update -y && apt-get install vim
+RUN apt-get update && apt-get install -y vim
